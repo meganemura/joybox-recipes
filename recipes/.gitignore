@@ -2,6 +2,7 @@
 build
 tags
 app/pixate_code.rb
+resources/*
 resources/*.nib
 resources/*.momd
 resources/*.storyboardc
