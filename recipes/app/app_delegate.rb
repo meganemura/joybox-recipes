@@ -13,7 +13,7 @@ class AppDelegate
     @window.setRootViewController(@navigation_controller)
     @window.makeKeyAndVisible
 
-    @director << HelloWorldLayer.scene
+    @director << HelloWorldLayer.scene(:color => [170, 220, 120], :opacity => 255)
 
     true
   end

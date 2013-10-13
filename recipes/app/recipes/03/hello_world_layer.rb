@@ -1,9 +1,9 @@
-class HelloWorldLayer < Joybox::Core::Layer
+class HelloWorldLayer < Joybox::Core::LayerColor
 
   scene
 
-  def self.new
-    layer = super
+  def self.new(options = {})
+    layer = super(options)
     player = Sprite.new(
       :file_name => 'recipes/recipe03/monkey01.png',
       :rect => [[0, 0], [100, 135]]
