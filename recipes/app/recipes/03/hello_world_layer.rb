@@ -13,6 +13,8 @@ class HelloWorldLayer < Joybox::Core::LayerColor
     layer << player
 
     layer.schedule('game_logic', :interval => 3.0)
+    layer.schedule('update')
+
     layer.TouchMode = KCCTouchesAllAtOnce
     layer.TouchEnabled = true # No need for Joybox (called in "on_touches_*" methods)
 
@@ -79,6 +81,34 @@ class HelloWorldLayer < Joybox::Core::LayerColor
 
     move_action = Move.to(:position => location, :duration => duration)
     player.run_action(move_action)
+  end
+
+  def update
+    # Get monkey sprite (identified by tag=1)
+    player = self.getChildByTag(1)
+    # Detection region
+    player_rect = [
+      player.position.x - player.contentSize.width / 4,
+      player.position.y - player.contentSize.height / 4,
+      player.contentSize.half_width,
+      player.contentSize.half_height,
+    ].to_rect
+
+    # Get hamburger sprite (identified by tag=2)
+    food = self.getChildByTag(2)
+    return unless food
+    food_rect = [
+      food.position.x - food.contentSize.half_width,
+      food.position.y - food.contentSize.half_height,
+      food.contentSize.width,
+      food.contentSize.height,
+    ].to_rect
+
+    # Collision detection
+    if CGRectIntersectsRect(player_rect, food_rect)
+      self.removeChild(food)
+    end
+
   end
 
 end
