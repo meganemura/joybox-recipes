@@ -31,9 +31,30 @@ class HelloWorldLayer < Joybox::Core::Layer
 
     # action continuous time
     duration = 2.0
+
     # create action
-    move = Move.to(:position => [food.contentSize.half_width * 3, food.position.y], :duration => duration)
-    food.run_action(move)
+    move_action = Move.to(
+      :position => [food.contentSize.half_width * 3, food.position.y],
+      :duration => duration
+    )
+    move_action_done = Callback.with do |node|
+      sprite_move_finished(node)
+    end
+    move_sequence= Sequence.with(:actions => [move_action, move_action_done])
+    food.run_action(move_sequence)
+  end
+
+  def sprite_move_finished(sender)
+    sprite = sender
+
+    # Recipe 05-3
+    self.removeChild(sprite)
+
+    # Recipe 05-4
+    # sprite.visible = false
+
+    # Recipe 05-5
+    # sprite.opacity = 0
   end
 
 end
