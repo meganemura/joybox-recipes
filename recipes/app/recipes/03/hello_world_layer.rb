@@ -1,4 +1,6 @@
-class HelloWorldLayer < Joybox::Core::LayerColor
+# NOTE: LayerGradient is not supported yet.
+#       Supported only in my development branch.
+class HelloWorldLayer < Joybox::Core::LayerGradient
 
   scene
 
