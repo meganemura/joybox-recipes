@@ -13,13 +13,7 @@ class AppDelegate
     @window.setRootViewController(@navigation_controller)
     @window.makeKeyAndVisible
 
-    # NOTE: LayerGradient is not supported yet.
-    #       Supported only in my development branch.
-    @director << HelloWorldLayer.scene(
-      :start  => [70,  145,  15, 255],
-      :end    => [170, 220, 120, 255],
-      :vector => [0.0. 1.0]
-    )
+    @director << HelloWorldLayer.scene(:color => [70, 145, 15])
 
     true
   end

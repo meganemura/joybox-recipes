@@ -1,6 +1,4 @@
-# NOTE: LayerGradient is not supported yet.
-#       Supported only in my development branch.
-class HelloWorldLayer < Joybox::Core::LayerGradient
+class HelloWorldLayer < Joybox::Core::LayerColor
 
   scene
 
@@ -15,6 +13,14 @@ class HelloWorldLayer < Joybox::Core::LayerGradient
     layer << player
 
     layer.schedule('game_logic', :interval => 3.0)
+    layer.TouchMode = KCCTouchesAllAtOnce
+    layer.TouchEnabled = true # No need for Joybox (called in "on_touches_*" methods)
+
+    layer.on_touches_began do |touches, event|
+      layer.touches_began(touches, event)
+    end
+
+    layer
   end
 
   def game_logic
@@ -57,6 +63,22 @@ class HelloWorldLayer < Joybox::Core::LayerGradient
 
     # Recipe 05-5
     # sprite.opacity = 0
+  end
+
+  def touches_began(touches, event)
+    touch = touches.any_object
+    location = Joybox.director.convertTouchToGL(touch)
+
+    player = self.getChildByTag(1)
+
+    length = jbpDistance(
+      jbp(location.x, location.y),
+      jbp(player.position.x, player.position.y)
+    )
+    duration = length / Screen.width * 1.5
+
+    move_action = Move.to(:position => location, :duration => duration)
+    player.run_action(move_action)
   end
 
 end
