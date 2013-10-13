@@ -107,8 +107,20 @@ class HelloWorldLayer < Joybox::Core::LayerColor
     # Collision detection
     if CGRectIntersectsRect(player_rect, food_rect)
       self.removeChild(food)
+
+      # Change monkey image to eat one
+      player.texture = CCTextureCache.sharedTextureCache.addImage('recipes/recipe03/monkey02.png')
+
+      # Call HelloWorld.eat after 0.1 second.
+      self.scheduleOnce('eat', delay:0.1)
     end
 
+  end
+
+  def eat
+    # Change monkey image to normal one
+    player = self.getChildByTag(1)
+    player.texture = CCTextureCache.sharedTextureCache.addImage('recipes/recipe03/monkey01.png')
   end
 
 end
