@@ -2,6 +2,8 @@ class HelloWorldLayer < Joybox::Core::LayerColor
 
   scene
 
+  attr_accessor :points
+
   def on_enter
     player = Sprite.new(
       :file_name => 'recipes/recipe03/monkey01.png',
@@ -57,7 +59,8 @@ class HelloWorldLayer < Joybox::Core::LayerColor
     item_on_2.color = [102, 102, 102]
     menu_item_on = CCMenuItemSprite.itemWithNormalSprite(item_on_1, selectedSprite: item_on_2)
 
-    # toggle_item = CCMenuItemToggle.itemWithTarget(, selector: 'change_mode', items: [menu_item_off, menu_item_on])
+    # TODO: create example using itemWithTarget
+    # toggle_item = CCMenuItemToggle.itemWithTarget(self, selector: 'change_mode', items: [menu_item_off, menu_item_on])
     toggle_item = CCMenuItemToggle.itemWithItems([menu_item_off, menu_item_on], block: lambda {|item| change_mode(item) })
     toggle_item.position = [close_item.contentSize.half_width, Screen.height - close_item.contentSize.half_height]
 
@@ -66,6 +69,21 @@ class HelloWorldLayer < Joybox::Core::LayerColor
     toggle_menu.tag = 3
     self << toggle_menu
 
+
+    # recipe 12
+    # Score strings
+    score_label = Label.new(:text => 'SCORE', :font_name => 'arial', :font_size => 48)
+    score_label.position = [Screen.half_width, Screen.height - score_label.contentSize.half_height]
+    score_label.tag = 10
+    self << score_label
+
+    # Score point
+    points_label = Label.new(:text => '0', :fond_name => 'arial', :font_size => 48)
+    points_label.position = [score_label.position.x + score_label.contentSize.width, Screen.height - points_label.contentSize.half_height]
+    points_label.tag = 11
+    self << points_label
+
+    @points ||= 0
   end
 
   def menu_close
@@ -75,7 +93,6 @@ class HelloWorldLayer < Joybox::Core::LayerColor
 
   def change_mode(item)
     selected_index = item.selectedIndex
-    puts selected_index
     player = self.getChildByTag(1)
     player.visible = (selected_index == 0)
   end
@@ -176,6 +193,10 @@ class HelloWorldLayer < Joybox::Core::LayerColor
     # Change monkey image to normal one
     player = self.getChildByTag(1)
     player.texture = CCTextureCache.sharedTextureCache.addImage('recipes/recipe03/monkey01.png')
+
+    @points += player.position.x / (Screen.width / 4) + 1
+    label = self.getChildByTag(11)
+    label.string = @points.to_i.to_s
   end
 
 end
