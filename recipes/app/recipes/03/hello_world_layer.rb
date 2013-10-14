@@ -22,7 +22,7 @@ class HelloWorldLayer < Joybox::Core::LayerColor
     end
 
 
-    # MenuImage button
+    # MenuImage button (recipe 10)
     close_item = MenuImage.new(
       :image_file_name => 'recipes/recipe10/button_close.png',
       :selected_image_file_name => 'recipes/recipe10/button_close_pressed.png',
@@ -35,7 +35,7 @@ class HelloWorldLayer < Joybox::Core::LayerColor
     self << menu
 
 
-    # Sprite button
+    # Sprite button (recipe 10)
     item_1 = Sprite.new(:file_name => 'recipes/recipe10/button_close.png')
     item_2 = Sprite.new(:file_name => 'recipes/recipe10/button_close.png')
     item_2.color = [102, 102, 102]
@@ -45,11 +45,39 @@ class HelloWorldLayer < Joybox::Core::LayerColor
     menu_2.position = [0, 0]
     self << menu_2
 
+
+    # Toggle button (recipe 11)
+    item_off_1 = Sprite.new(:file_name => 'recipes/recipe11/button_check_off.png')
+    item_off_2 = Sprite.new(:file_name => 'recipes/recipe11/button_check_off.png')
+    item_off_2.color = [102, 102, 102]
+    menu_item_off = CCMenuItemSprite.itemWithNormalSprite(item_off_1, selectedSprite: item_off_2)
+
+    item_on_1 = Sprite.new(:file_name => 'recipes/recipe11/button_check_on.png')
+    item_on_2 = Sprite.new(:file_name => 'recipes/recipe11/button_check_on.png')
+    item_on_2.color = [102, 102, 102]
+    menu_item_on = CCMenuItemSprite.itemWithNormalSprite(item_on_1, selectedSprite: item_on_2)
+
+    # toggle_item = CCMenuItemToggle.itemWithTarget(, selector: 'change_mode', items: [menu_item_off, menu_item_on])
+    toggle_item = CCMenuItemToggle.itemWithItems([menu_item_off, menu_item_on], block: lambda {|item| change_mode(item) })
+    toggle_item.position = [close_item.contentSize.half_width, Screen.height - close_item.contentSize.half_height]
+
+    toggle_menu = Menu.new(:items => [toggle_item])
+    toggle_menu.position = [0, 0]
+    toggle_menu.tag = 3
+    self << toggle_menu
+
   end
 
   def menu_close
     Joybox.director.end
     exit
+  end
+
+  def change_mode(item)
+    selected_index = item.selectedIndex
+    puts selected_index
+    player = self.getChildByTag(1)
+    player.visible = (selected_index == 0)
   end
 
   def game_logic
