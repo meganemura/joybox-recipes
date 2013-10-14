@@ -9,7 +9,7 @@ Copy `cocos2dx_recipe/SampleCode/projects/RecipeBook/Resources/*` to `recipes/re
 
 ## Recipes
 
-### Chapter 1
+### Chapter 1 (Basics)
 01. Setup DevEnv (excluded)
 02. Create iOS and Android projects (excluded)
 03. Display sprite
@@ -22,6 +22,20 @@ Copy `cocos2dx_recipe/SampleCode/projects/RecipeBook/Resources/*` to `recipes/re
 10. Create a button
 11. Create a toggle button
 12. Display text
-13. Various animations
-14. ...
+13. Various actions
+14. Easing actions
+15. Callback
+16. Animation with .plist file
+  * `SpriteFrameCache`
+17. Transition
+18. Porting from Cocos2d for iPhone (excluded)
+19. Display debug information
+20. Managing memory (excluded)
+21. Using array (excluded)
+22. Using dictionary (excluded)
+23. Useful macros
+24. Logging for debug
+
+### Chapter 2 (About sprite)
+25. ...
 
