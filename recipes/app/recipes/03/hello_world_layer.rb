@@ -2,27 +2,54 @@ class HelloWorldLayer < Joybox::Core::LayerColor
 
   scene
 
-  def self.new(options = {})
-    layer = super(options)
+  def on_enter
     player = Sprite.new(
       :file_name => 'recipes/recipe03/monkey01.png',
       :rect => [[0, 0], [100, 135]]
     )
     player.position = [player.contentSize.width.half * 3, Screen.half_height]
     player.tag = 1
-    layer << player
+    self << player
 
-    layer.schedule('game_logic', :interval => 3.0)
-    layer.schedule('update')
+    schedule('game_logic', :interval => 3.0)
+    schedule('update')
 
-    layer.TouchMode = KCCTouchesAllAtOnce
-    layer.TouchEnabled = true # No need for Joybox (called in "on_touches_*" methods)
+    self.TouchMode = KCCTouchesAllAtOnce
+    self.TouchEnabled = true # No need for Joybox (called in "on_touches_*" methods)
 
-    layer.on_touches_began do |touches, event|
-      layer.touches_began(touches, event)
+    on_touches_began do |touches, event|
+      touches_began(touches, event)
     end
 
-    layer
+
+    # MenuImage button
+    close_item = MenuImage.new(
+      :image_file_name => 'recipes/recipe10/button_close.png',
+      :selected_image_file_name => 'recipes/recipe10/button_close_pressed.png',
+      :disabled_image_file_name => 'recipes/recipe10/button_close_pressed.png') do |menu_item|
+        menu_close
+    end
+    close_item.position = [Screen.width - close_item.contentSize.half_width, close_item.contentSize.half_height]
+    menu = Menu.new(:items => [close_item])
+    menu.position = [0, 0]
+    self << menu
+
+
+    # Sprite button
+    item_1 = Sprite.new(:file_name => 'recipes/recipe10/button_close.png')
+    item_2 = Sprite.new(:file_name => 'recipes/recipe10/button_close.png')
+    item_2.color = [102, 102, 102]
+    close_item_2 = CCMenuItemSprite.itemWithNormalSprite(item_1, selectedSprite: item_2, block: lambda {|menu_item| menu_close })
+    close_item_2.position = [Screen.width - close_item_2.contentSize.half_width * 3, close_item_2.contentSize.half_height]
+    menu_2 = Menu.new(:items => [close_item_2])
+    menu_2.position = [0, 0]
+    self << menu_2
+
+  end
+
+  def menu_close
+    Joybox.director.end
+    exit
   end
 
   def game_logic
