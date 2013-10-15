@@ -36,6 +36,15 @@ Copy `cocos2dx_recipe/SampleCode/projects/RecipeBook/Resources/*` to `recipes/re
 23. Useful macros
 24. Logging for debug
 
-### Chapter 2 (About sprite)
-25. ...
+### Chapter 2 (About Images)
+25. Display big images
+  * `CCBigImage`
+26. Masking by clipped image
+27. Converting swf
+28. Card flip animation
+
+
+
+
+
 
