@@ -5,6 +5,8 @@ class HelloWorldLayer < Joybox::Core::LayerColor
   attr_accessor :points
 
   def on_enter
+
+    # Recipe: 03
     player = Sprite.new(
       :file_name => 'recipes/recipe03/monkey01.png',
       :rect => [[0, 0], [100, 135]]
@@ -13,9 +15,16 @@ class HelloWorldLayer < Joybox::Core::LayerColor
     player.tag = 1
     self << player
 
+
+    # Recipe: 04
     schedule('game_logic', :interval => 3.0)
+
+
+    # Recipe: 09
     schedule('update')
 
+
+    # Recipe: 07
     self.TouchMode = KCCTouchesAllAtOnce
     self.TouchEnabled = true # No need for Joybox (called in "on_touches_*" methods)
 
@@ -24,7 +33,8 @@ class HelloWorldLayer < Joybox::Core::LayerColor
     end
 
 
-    # MenuImage button (recipe 10)
+    # Recipe: 10
+    #   Using MenuImage button
     close_item = MenuImage.new(
       :image_file_name => 'recipes/recipe10/button_close.png',
       :selected_image_file_name => 'recipes/recipe10/button_close_pressed.png',
@@ -36,8 +46,7 @@ class HelloWorldLayer < Joybox::Core::LayerColor
     menu.position = [0, 0]
     self << menu
 
-
-    # Sprite button (recipe 10)
+    #   Using Sprite button
     item_1 = Sprite.new(:file_name => 'recipes/recipe10/button_close.png')
     item_2 = Sprite.new(:file_name => 'recipes/recipe10/button_close.png')
     item_2.color = [102, 102, 102]
@@ -48,7 +57,8 @@ class HelloWorldLayer < Joybox::Core::LayerColor
     self << menu_2
 
 
-    # Toggle button (recipe 11)
+    # Recipe: 11
+    #   Toggle button
     item_off_1 = Sprite.new(:file_name => 'recipes/recipe11/button_check_off.png')
     item_off_2 = Sprite.new(:file_name => 'recipes/recipe11/button_check_off.png')
     item_off_2.color = [102, 102, 102]
@@ -70,14 +80,14 @@ class HelloWorldLayer < Joybox::Core::LayerColor
     self << toggle_menu
 
 
-    # recipe 12
-    # Score strings
+    # Recipe: 12
+    #   Score strings
     score_label = Label.new(:text => 'SCORE', :font_name => 'arial', :font_size => 48)
     score_label.position = [Screen.half_width, Screen.height - score_label.contentSize.half_height]
     score_label.tag = 10
     self << score_label
 
-    # Score point
+    #   Score point
     points_label = Label.new(:text => '0', :fond_name => 'arial', :font_size => 48)
     points_label.position = [score_label.position.x + score_label.contentSize.width, Screen.height - points_label.contentSize.half_height]
     points_label.tag = 11
@@ -86,15 +96,16 @@ class HelloWorldLayer < Joybox::Core::LayerColor
     @points ||= 0
   end
 
+  # Recipe: 10
   def menu_close
     Joybox.director.end
     exit
   end
 
+  # Recipe: 11
   def change_mode(item)
-    selected_index = item.selectedIndex
     player = self.getChildByTag(1)
-    player.visible = (selected_index == 0)
+    player.visible = (item.selectedIndex == 0)
   end
 
   def game_logic
@@ -102,6 +113,8 @@ class HelloWorldLayer < Joybox::Core::LayerColor
   end
 
   def add_food
+
+    # Recipe: 04
     food = Sprite.new(
       :file_name => 'recipes/recipe03/hamburger.png',
       :rect => [[0, 0], [36, 30]]
@@ -126,9 +139,9 @@ class HelloWorldLayer < Joybox::Core::LayerColor
     food.run_action(move_sequence)
 
 
-    # Recipe 13
+    # Recipe: 13
 
-    # Recipe 13-2
+    # Recipe: 13-2
     #   scale_action = Scale.to(:scale => 4.0, :duration => duration)
     #   rotate_action = Rotate.by(:angle => 360, :duration => duration)
     # Run each actions
@@ -185,16 +198,17 @@ class HelloWorldLayer < Joybox::Core::LayerColor
   def sprite_move_finished(sender)
     sprite = sender
 
-    # Recipe 05-3
+    # Recipe: 05-3
     self.removeChild(sprite)
 
-    # Recipe 05-4
+    # Recipe: 05-4
     # sprite.visible = false
 
-    # Recipe 05-5
+    # Recipe: 05-5
     # sprite.opacity = 0
   end
 
+  # Recipe: 07
   def touches_began(touches, event)
     touch = touches.any_object
     location = Joybox.director.convertTouchToGL(touch)
@@ -212,6 +226,7 @@ class HelloWorldLayer < Joybox::Core::LayerColor
   end
 
   def update
+    # Recipe: 08
     # Get monkey sprite (identified by tag=1)
     player = self.getChildByTag(1)
     # Detection region
@@ -236,13 +251,14 @@ class HelloWorldLayer < Joybox::Core::LayerColor
     if CGRectIntersectsRect(player_rect, food_rect)
       self.removeChild(food)
 
+
+      # Recipe: 09
       # Change monkey image to eat one
       player.texture = CCTextureCache.sharedTextureCache.addImage('recipes/recipe03/monkey02.png')
 
       # Call HelloWorld.eat after 0.1 second.
       self.scheduleOnce('eat', delay:0.1)
     end
-
   end
 
   def eat
