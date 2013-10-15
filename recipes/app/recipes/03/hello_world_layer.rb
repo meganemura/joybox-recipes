@@ -124,6 +124,62 @@ class HelloWorldLayer < Joybox::Core::LayerColor
     end
     move_sequence= Sequence.with(:actions => [move_action, move_action_done])
     food.run_action(move_sequence)
+
+
+    # Recipe 13
+
+    # Recipe 13-2
+    #   scale_action = Scale.to(:scale => 4.0, :duration => duration)
+    #   rotate_action = Rotate.by(:angle => 360, :duration => duration)
+    # Run each actions
+    #   food.run_action(scale_action)
+    #   food.run_action(rotate_action)
+    # or run multiple by using Spawn
+    #   scale_rotate_actions = Spawn.with(:actions => [scale_action, rotate_action])
+    #   food.run_action(scale_rotate_actions)
+
+    @action_type ||= 0
+    case @action_type
+    when 1
+      action_1 = Scale.to(:scale => 4.0, :duration => duration)
+      food.run_action(action_1)
+    when 2
+      action_1 = Rotate.by(:angle => 360, :duration => duration)
+      food.run_action(action_1)
+    when 3
+      action_1 = Scale.to(:scale => 4.0, :duration => duration)
+      action_2 = Rotate.by(:angle => 360, :duration => duration)
+      food.run_action(action_1)
+      food.run_action(action_2)
+    when 4
+      action_1 = Rotate.by(:angle => 360, :duration => duration)
+      action_2 = Repeat.forever(:action => action_1) # ?
+      food.run_action(action_2)
+    when 5
+      action_1 = Jump.by(:position => [0, 0], :height => 100, :jumps => 5, :duration => duration)
+      food.run_action(action_1)
+    when 6
+      action_1 = Scale.to(:scale => 4.0, :duration => duration / 2.0)
+      action_2 = Jump.by(:position => [0, 0], :height => 100, :jumps => 3, :duration => duration / 2.0)
+      action_sequence = Sequence.with(:actions => [action_1, action_2])
+      food.run_action(action_sequence)
+    when 7
+      action_1 = Fade.in(:duration => duration / 2.0)
+      action_2 = Fade.out(:duration => duration / 2.0) # Joybox doesn't support #reverse
+      action_sequence = Sequence.with(:actions => [action_1, action_2])
+      food.run_action(action_sequence)
+    when 8
+      food.stopAllActions()
+      p1 = [Screen.width, Screen.height]
+      p2 = [Screen.half_width, - Screen.height]
+      p3 = [0, Screen.height]
+      action_1 = Bezier.to(:bezier => [p1, p2, p3], :duration => duration)
+      action_sequence = Sequence.with(:actions => [action_1, move_action_done])
+      food.run_action(action_sequence)
+    else
+    end
+    @action_type = (@action_type + 1) % 9
+
   end
 
   def sprite_move_finished(sender)
