@@ -22,8 +22,16 @@ Copy `cocos2dx_recipe/SampleCode/projects/RecipeBook/Resources/*` to `recipes/re
 10. Create a button
 11. Create a toggle button
 12. Display text
+  * [Label](http://joybox.io/documentation/label/)
 13. Various actions
+  * [Bezier](http://joybox.io/documentation/bezier/)
+  * [Fade](http://joybox.io/documentation/fade/)
+  * [Jump](http://joybox.io/documentation/jump/)
+  * [Repeat](http://joybox.io/documentation/repeat/)
+  * [Rotate](http://joybox.io/documentation/rotate/)
+  * [Scale](http://joybox.io/documentation/scale/)
 14. Easing actions
+  * [Ease](http://joybox.io/documentation/ease/)
 15. Callback
 16. Animation with .plist file
   * `SpriteFrameCache`
