@@ -189,9 +189,30 @@ class HelloWorldLayer < Joybox::Core::LayerColor
       action_1 = Bezier.to(:bezier => [p1, p2, p3], :duration => duration)
       action_sequence = Sequence.with(:actions => [action_1, move_action_done])
       food.run_action(action_sequence)
+
+
+    # Recipe: 14
+    when 9
+      food.stopAllActions()
+      action_1 = Ease.in_out(:action => move_action, :rate => 3.0)
+      action_sequence = Sequence.with(:actions => [action_1, move_action_done])
+      food.run_action(action_sequence)
+    when 10
+      food.stopAllActions()
+      action_1 = Ease.bounce_out(:action => move_action)
+      action_sequence = Sequence.with(:actions => [action_1, move_action_done])
+      food.run_action(action_sequence)
+    when 11
+      food.stopAllActions()
+      action_1 = Ease.bounce_out(:action => move_action)
+      action_sequence = Sequence.with(:actions => [action_1, move_action_done])
+      food.run_action(action_sequence)
+
+      action_2 = Jump.by(:position => [0, 0], :height => 100, :jumps => 5, :duration => duration)
+      food.run_action(action_2)
     else
     end
-    @action_type = (@action_type + 1) % 9
+    @action_type = (@action_type + 1) % 12
 
   end
 
