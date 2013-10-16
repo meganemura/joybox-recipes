@@ -13,18 +13,36 @@ Copy `cocos2dx_recipe/SampleCode/projects/RecipeBook/Resources/*` to `recipes/re
 01. Setup DevEnv (excluded)
 02. Create iOS and Android projects (excluded)
 03. Display sprite
+  * [Sprite](http://joybox.io/documentation/sprite/)
 04. Move sprite
+  * [Move](http://joybox.io/documentation/move/)
 05. Remove sprite
+  * `CCCallFuncN`
 06. Change background color
+  * [Layer](http://joybox.io/documentation/layer/)
+  * [LayerColor](http://joybox.io/documentation/layer-color/)
+  * `LayerGradient`
+  * `CCLayerMultiplex`
 07. React to tap
+  * [Layer](http://joybox.io/documentation/layer/)
 08. Collision detection
+  * `CGRectIntersectsRect`
 09. Scheduling
 10. Create a button
 11. Create a toggle button
 12. Display text
+  * [Label](http://joybox.io/documentation/label/)
 13. Various actions
+  * [Bezier](http://joybox.io/documentation/bezier/)
+  * [Fade](http://joybox.io/documentation/fade/)
+  * [Jump](http://joybox.io/documentation/jump/)
+  * [Repeat](http://joybox.io/documentation/repeat/)
+  * [Rotate](http://joybox.io/documentation/rotate/)
+  * [Scale](http://joybox.io/documentation/scale/)
 14. Easing actions
-15. Callback
+  * [Ease](http://joybox.io/documentation/ease/)
+15. Call function in action sequence
+  * `CCCallFunc{,N,ND,O}`
 16. Animation with .plist file
   * `SpriteFrameCache`
 17. Transition
