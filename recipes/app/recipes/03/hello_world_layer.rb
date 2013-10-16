@@ -132,9 +132,7 @@ class HelloWorldLayer < Joybox::Core::LayerColor
       :position => [food.contentSize.half_width * 3, food.position.y],
       :duration => duration
     )
-    move_action_done = Callback.with do |node|
-      sprite_move_finished(node)
-    end
+    move_action_done = CCCallFuncN.actionWithTarget(self, selector: 'sprite_move_finished:')  # Recipe: 15
     move_sequence= Sequence.with(:actions => [move_action, move_action_done])
     food.run_action(move_sequence)
 
@@ -213,7 +211,6 @@ class HelloWorldLayer < Joybox::Core::LayerColor
     else
     end
     @action_type = (@action_type + 1) % 12
-
   end
 
   def sprite_move_finished(sender)
