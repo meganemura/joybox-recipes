@@ -274,7 +274,7 @@ class HelloWorldLayer < Joybox::Core::LayerColor
       # Change monkey image to eat one
       player.texture = CCTextureCache.sharedTextureCache.addImage('recipes/recipe03/monkey02.png')
 
-      # Call HelloWorld.eat after 0.1 second.
+      # Call HelloWorldLayer#eat after 0.1 second.
       self.scheduleOnce('eat', delay:0.1)
     end
   end
