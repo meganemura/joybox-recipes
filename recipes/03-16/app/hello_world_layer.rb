@@ -287,6 +287,21 @@ class HelloWorldLayer < Joybox::Core::LayerColor
     @points += player.position.x / (Screen.width / 4) + 1
     label = self.getChildByTag(11)
     label.string = @points.to_i.to_s
+
+    # Recipe: 16-2
+    #   TODO: use SpriteFrameCache
+    # SpriteFrameCache.frames.add(:file_name => 'recipes/recipe16/animations.plist')
+    # monkey_frames = SpriteFrameCache.frames.where(:prefix => 'monkey', :suffix => '.png')
+    monkey_frames = (3..5).map {|n| "recipes/recipe16/monkey0#{n}.png" }
+    animation = Animation.new({
+      :delay_per_unit         => 0.15 / 3.0,
+      :restore_original_frame => true,
+      :loops                  => 3,
+    })
+    monkey_frames.each do |frame|
+      animation.add_frame(:file_name => frame)
+    end
+    player.run_action(animation.action)
   end
 
 end
