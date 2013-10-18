@@ -302,6 +302,8 @@ class HelloWorldLayer < Joybox::Core::LayerColor
       animation.add_frame(:file_name => frame)
     end
     player.run_action(animation.action)
+
+    # TODO: Recipe: 16 is pending
   end
 
 end
