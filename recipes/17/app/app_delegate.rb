@@ -19,7 +19,7 @@ class AppDelegate
     next_scene = Joybox::Core::LayerColor.new(:color => [255, 255, 255])
     ## Recipe: 17-2
     # scene = CCTransitionZoomFlipX.transitionWithDuration(1.0, :scene => next_scene)
-    scene = CCTransitionMoveInT.transitionWithDuration(1.0, :scene => modal_scene)
+    scene = CCTransitionMoveInT.transitionWithDuration(1.0, :scene => next_scene)
     @director.replace_scene(scene)
 
 
