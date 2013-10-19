@@ -46,6 +46,8 @@ Copy `cocos2dx_recipe/SampleCode/projects/RecipeBook/Resources/*` to `recipes/re
 16. Animation with .plist file
   * `SpriteFrameCache`
 17. Transition
+  * `CCTransitionZoomFlipX`
+  * `CCTransitionMoveInT`
 18. Porting from Cocos2d for iPhone (excluded)
 19. Display debug information
 20. Managing memory (excluded)
@@ -60,6 +62,14 @@ Copy `cocos2dx_recipe/SampleCode/projects/RecipeBook/Resources/*` to `recipes/re
 26. Masking by clipped image
 27. Converting swf
 28. Card flip animation
+29. ...
+30. Faster draw with CCSpriteBatchNode
+31. Display GUI parts
+32. Input text
+33. Creating various buttons by using one image
+34. Using CCScrollView
+35. Support multi resolution
+36. ...
 
 
 
