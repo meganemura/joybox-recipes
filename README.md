@@ -63,7 +63,8 @@ Copy `cocos2dx_recipe/SampleCode/projects/RecipeBook/Resources/*` to `recipes/re
  * 27. Converting swf
  * 28. Card flip animation
  * 29. ...
- * 30. Faster draw with CCSpriteBatchNode
+ * 30. Faster draw with SpriteBatch
+   * [SpriteBatch](http://joybox.io/documentation/sprite-batch/)
  * 31. Display GUI parts
  * 32. Input text
  * 33. Creating various buttons by using one image
