@@ -7,9 +7,25 @@ RubyMotion port of recipes from japanese Cocos2d-x book `Cocos2d-x 開発のレ�
 ## before all
 Copy `cocos2dx_recipe/SampleCode/projects/RecipeBook/Resources/*` to `recipes/resources`.
 
+## Chapters
+
+ * Chapter 1 (Basics)
+   * 01 - 24
+ * Chapter 2 (About Images)
+   * 25 - 46
+ * Chapter 3 (About Sounds)
+   * 47 - 50
+ * Chapter 4 (About Data)
+   * 51 - 58
+ * Chapter 5 (OS specifics)
+   * 59 - 68
+ * Chapter 6 (Others)
+   * 69 - 79
+ * Chapter 7 (Associate with extra tools)
+   * 80 - 88
+
 ## Recipes
 
-### Chapter 1 (Basics)
 01. Setup DevEnv (excluded)
 02. Create iOS and Android projects (excluded)
 03. Display sprite
@@ -55,8 +71,6 @@ Copy `cocos2dx_recipe/SampleCode/projects/RecipeBook/Resources/*` to `recipes/re
 22. Using dictionary (excluded)
 23. Useful macros
 24. Logging for debug
-
-### Chapter 2 (About Images)
 25. Display big images
   * `CCBigImage`
 26. Masking by clipped image
@@ -70,9 +84,5 @@ Copy `cocos2dx_recipe/SampleCode/projects/RecipeBook/Resources/*` to `recipes/re
 34. Using CCScrollView
 35. Support multi resolution
 36. ...
-
-
-
-
 
 
