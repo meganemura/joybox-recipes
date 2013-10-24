@@ -10,8 +10,8 @@ Copy `cocos2dx_recipe/SampleCode/projects/RecipeBook/Resources/*` to `recipes/re
 ## Recipes
 
 ### Chapter 1 (Basics)
- * 01. Setup DevEnv (excluded)
- * 02. Create iOS and Android projects (excluded)
+ * 01. ~~Setup DevEnv~~ (excluded)
+ * 02. ~~Create iOS and Android projects~~ (excluded)
  * 03. Display sprite
    * [Sprite](http://joybox.io/documentation/sprite/)
  * 04. Move sprite
@@ -48,11 +48,11 @@ Copy `cocos2dx_recipe/SampleCode/projects/RecipeBook/Resources/*` to `recipes/re
  * 17. Transition
    * `CCTransitionZoomFlipX`
    * `CCTransitionMoveInT`
- * 18. Porting from Cocos2d for iPhone (excluded)
+ * 18. ~~Porting from Cocos2d for iPhone~~ (excluded)
  * 19. Display debug information
- * 20. Managing memory (excluded)
- * 21. Using array (excluded)
- * 22. Using dictionary (excluded)
+ * 20. ~~Managing memory~~ (excluded)
+ * 21. ~~Using array~~ (excluded)
+ * 22. ~~Using dictionary~~ (excluded)
  * 23. Useful macros
  * 24. Logging for debug
 
@@ -73,19 +73,46 @@ Copy `cocos2dx_recipe/SampleCode/projects/RecipeBook/Resources/*` to `recipes/re
  * 36. ...
 
 ### Chapter 3 (About Sounds)
- * 47. Playable effects and bgms (excluded)
+ * 47. ~~Playable effects and bgms~~ (excluded)
  * 48. Playing sound effects
    * [AudioEffect](http://joybox.io/documentation/audio-effect/)
- * 49 - 50
+ * 49. Playing bgms
+ * 50. ~~something for android~~ (excluded)
 
 ### Chapter 4 (About Data)
- * 51 - 58
+ * 51. Storing data as preference data
+ * 52. Using SQLite
+ * 53. Saving data
+ * 54. Communicate with server
+ * 55. Display download progress
+ * 56. Using JSON
+ * 57. Using plist
+ * 58. Using XML
 
 ### Chapter 5 (OS specifics)
- * 59 - 68
+ * 59. ~~something for os compatibility~~ (excluded)
+ * 60. ~~something for depending os~~ (excluded)
+ * 61. InAppPurchase
+ * 62. Advertises
+ * 63. Using Google Analytics
+ * 64. Using camera
+ * 65. ~~Multi-user for Android 4.2~~ (excluded)
+ * 66. ~~Build for Android with Xcode~~ (excluded)
+ * 67. ~~Hardware-key of Android~~ (excluded)
+ * 68. ~~Debug C++ with Eclipse~~ (excluded)
 
 ### Chapter 6 (Others)
- * 69 - 79
+ * 69. Multithreading
+ * 70. Physics engine
+ * 71. Pausing game
+ * 72. Simple 3D
+ * 73. ~~Avoiding crash by understanding reference counter~~ (excluded)
+ * 74. Using tiled map
+ * 75. Implementing delegate method
+ * 76. Extract zip archive
+ * 77. Localization
+ * 78. Using acceleration sensor
+ * 79. Profiling and detecting bottlenecks
 
 ### Chapter 7 (Associate with extra tools)
  * 80 - 88
