@@ -73,7 +73,10 @@ Copy `cocos2dx_recipe/SampleCode/projects/RecipeBook/Resources/*` to `recipes/re
  * 36. ...
 
 ### Chapter 3 (About Sounds)
- * 47 - 50
+ * 47. Playable effects and bgms (excluded)
+ * 48. Playing sound effects
+   * [AudioEffect](http://joybox.io/documentation/audio-effect/)
+ * 49 - 50
 
 ### Chapter 4 (About Data)
  * 51 - 58
